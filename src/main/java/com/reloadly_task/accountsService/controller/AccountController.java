@@ -2,6 +2,7 @@ package com.reloadly_task.accountsService.controller;
 
 import com.reloadly_task.accountsService.dto.request.AccountRegistrationRequest;
 import com.reloadly_task.accountsService.dto.response.UpdateAccountResponse;
+import com.reloadly_task.accountsService.model.Account;
 import com.reloadly_task.accountsService.service.AccountService;
 import org.hibernate.annotations.common.util.impl.LoggerFactory;
 import org.jboss.logging.Logger;
@@ -11,6 +12,7 @@ import org.springframework.scheduling.annotation.Async;
 import org.springframework.web.bind.annotation.*;
 
 import java.math.BigDecimal;
+import java.util.List;
 
 
 @RestController
@@ -43,6 +45,11 @@ public class AccountController {
     @GetMapping("details/{id}")
     public String getBalance (@PathVariable("id") Long id){
         return accountService.getAccountBalanceByUserId(id).toString();
+    }
+
+    @GetMapping("/")
+    public List<Account> getAllAccounts (){
+        return accountService.getAllAccounts();
     }
 
 }
