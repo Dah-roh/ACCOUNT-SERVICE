@@ -55,7 +55,7 @@ public class AccountServiceImpl implements AccountService {
     }
 
     public void transactionService(String uri, Long id) {
-        WebClient webClient = WebClient.create("http://localhost:9091");
+        WebClient webClient = WebClient.create(url);
        webClient.get()
                 .uri(uri)
                 .header(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE)
